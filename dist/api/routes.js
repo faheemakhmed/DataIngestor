@@ -1,0 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const source_controller_1 = require("@/modules/sources/source.controller");
+const queue_controller_1 = require("@/modules/queue/queue.controller");
+const records_controller_1 = require("@/modules/records/records.controller");
+const auth_controller_1 = require("@/modules/auth/auth.controller");
+const auth_middleware_1 = require("@/modules/auth/auth.middleware");
+const router = (0, express_1.Router)();
+router.post('/auth/register', auth_controller_1.authController.register);
+router.post('/auth/login', auth_controller_1.authController.login);
+router.get('/sources', auth_middleware_1.authenticate, source_controller_1.sourceController.getAll);
+router.post('/sources', auth_middleware_1.authenticate, source_controller_1.sourceController.create);
+router.get('/sources/:id', auth_middleware_1.authenticate, source_controller_1.sourceController.getById);
+router.patch('/sources/:id', auth_middleware_1.authenticate, source_controller_1.sourceController.update);
+router.delete('/sources/:id', auth_middleware_1.authenticate, source_controller_1.sourceController.delete);
+router.post('/sources/:id/sync', auth_middleware_1.authenticate, source_controller_1.sourceController.sync);
+router.get('/sources/:id/checkpoint', auth_middleware_1.authenticate, source_controller_1.sourceController.getCheckpoint);
+router.get('/jobs', auth_middleware_1.authenticate, queue_controller_1.queueController.getJobs);
+router.get('/jobs/:id/logs', auth_middleware_1.authenticate, queue_controller_1.queueController.getJobLogs);
+router.post('/jobs/:jobId/reprocess', auth_middleware_1.authenticate, queue_controller_1.queueController.reprocess);
+router.post('/jobs/:jobId/reprocess-dead-letter', auth_middleware_1.authenticate, queue_controller_1.queueController.reprocessDeadLetter);
+router.get('/records', auth_middleware_1.authenticate, records_controller_1.recordsController.getAll);
+router.get('/records/:id', auth_middleware_1.authenticate, records_controller_1.recordsController.getById);
+router.get('/records/enriched', auth_middleware_1.authenticate, records_controller_1.recordsController.getEnriched);
+exports.default = router;
+//# sourceMappingURL=routes.js.map
