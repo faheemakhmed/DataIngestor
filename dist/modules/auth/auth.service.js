@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = createUser;
 exports.validateUser = validateUser;
 exports.getUserById = getUserById;
-const prisma_1 = __importDefault(require("@/lib/prisma"));
+const prisma_1 = __importDefault(require("../../lib/prisma"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 async function createUser(data) {
     const hashedPassword = await bcryptjs_1.default.hash(data.password, 10);

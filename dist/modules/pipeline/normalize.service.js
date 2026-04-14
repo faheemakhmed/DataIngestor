@@ -5,7 +5,7 @@ exports.normalizeBatch = normalizeBatch;
 const ingestion_repository_1 = require("../ingestion/ingestion.repository");
 const normalize_repository_1 = require("./normalize.repository");
 const queue_service_1 = require("../queue/queue.service");
-const logger_1 = require("@/lib/logger");
+const logger_1 = require("../../lib/logger");
 const client_1 = require("@prisma/client");
 function normalizeValue(value, rule) {
     if (value === null || value === undefined) {

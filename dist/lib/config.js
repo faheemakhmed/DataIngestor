@@ -4,7 +4,7 @@ exports.config = void 0;
 exports.config = {
     port: parseInt(process.env.PORT || '3000', 10),
     nodeEnv: process.env.NODE_ENV || 'development',
-    jwtSecret: process.env.JWT_SECRET || 'default-secret',
+    jwtSecret: process.env.JWT_SECRET || 'change-this-secret-in-production',
     workerConcurrency: parseInt(process.env.WORKER_CONCURRENCY || '5', 10),
     jobPollInterval: parseInt(process.env.JOB_POLL_INTERVAL || '5000', 10),
     maxRetries: parseInt(process.env.MAX_RETRIES || '3', 10),

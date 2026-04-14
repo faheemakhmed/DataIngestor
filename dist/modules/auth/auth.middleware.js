@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticate = authenticate;
 exports.generateToken = generateToken;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const config_1 = __importDefault(require("@/lib/config"));
+const config_1 = __importDefault(require("../../lib/config"));
 function authenticate(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {

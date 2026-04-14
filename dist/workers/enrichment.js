@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("tsconfig-paths/register");
 const client_1 = require("@prisma/client");
 const queue_service_1 = require("../modules/queue/queue.service");
 const enrichment_service_1 = require("../modules/enrichment/enrichment.service");

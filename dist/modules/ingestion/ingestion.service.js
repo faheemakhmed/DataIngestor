@@ -7,9 +7,9 @@ exports.ingestFromSource = ingestFromSource;
 const axios_1 = __importDefault(require("axios"));
 const source_service_1 = require("../sources/source.service");
 const ingestion_repository_1 = require("./ingestion.repository");
-const hash_1 = require("@/lib/hash");
+const hash_1 = require("../../lib/hash");
 const queue_service_1 = require("../queue/queue.service");
-const logger_1 = require("@/lib/logger");
+const logger_1 = require("../../lib/logger");
 const mockApiData = {
     users: [
         { id: '1', data: { name: 'John Doe', email: 'john@example.com', created: '2024-01-01' } },

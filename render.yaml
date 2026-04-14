@@ -1,0 +1,87 @@
+services:
+  - name: data-pipeline-api
+    type: web
+    env: node
+    region: oregon
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        value: ${DATABASE_URL}
+      - key: JWT_SECRET
+        value: ${JWT_SECRET}
+      - key: ENRICHMENT_API_URL
+        value: ${ENRICHMENT_API_URL}
+      - key: ENRICHMENT_CACHE_TTL
+        value: ${ENRICHMENT_CACHE_TTL}
+      - key: WORKER_CONCURRENCY
+        value: 5
+      - key: JOB_POLL_INTERVAL
+        value: 5000
+      - key: MAX_RETRIES
+        value: 3
+      - key: RETRY_BACKOFF_MS
+        value: 1000
+
+  - name: data-pipeline-worker-ingest
+    type: worker
+    env: node
+    region: oregon
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm run worker:ingest
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: ${DATABASE_URL}
+      - key: JWT_SECRET
+        value: ${JWT_SECRET}
+      - key: ENRICHMENT_API_URL
+        value: ${ENRICHMENT_API_URL}
+      - key: WORKER_CONCURRENCY
+        value: 5
+      - key: JOB_POLL_INTERVAL
+        value: 5000
+      - key: MAX_RETRIES
+        value: 3
+      - key: RETRY_BACKOFF_MS
+        value: 1000
+
+  - name: data-pipeline-worker-normalize
+    type: worker
+    env: node
+    region: oregon
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm run worker:normalize
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: ${DATABASE_URL}
+
+  - name: data-pipeline-worker-enrich
+    type: worker
+    env: node
+    region: oregon
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm run worker:enrich
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: ${DATABASE_URL}
+      - key: ENRICHMENT_API_URL
+        value: ${ENRICHMENT_API_URL}
+      - key: ENRICHMENT_CACHE_TTL
+        value: ${ENRICHMENT_CACHE_TTL}
+
+databases:
+  - name: data-pipeline-db
+    databaseName: data_pipeline
+    user: postgres
+    plan: free
+    region: oregon

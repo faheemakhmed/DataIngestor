@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.jobRepository = exports.PrismaJobRepository = void 0;
-const prisma_1 = __importDefault(require("@/lib/prisma"));
+const prisma_1 = __importDefault(require("../../lib/prisma"));
 const client_1 = require("@prisma/client");
-const logger_1 = require("@/lib/logger");
-const config_1 = __importDefault(require("@/lib/config"));
+const logger_1 = require("../../lib/logger");
+const config_1 = __importDefault(require("../../lib/config"));
 class PrismaJobRepository {
     async create(data) {
         return prisma_1.default.pipelineJob.create({

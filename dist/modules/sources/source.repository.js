@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sourceRepository = exports.PrismaSourceRepository = void 0;
-const prisma_1 = __importDefault(require("@/lib/prisma"));
+const prisma_1 = __importDefault(require("../../lib/prisma"));
 class PrismaSourceRepository {
     async create(data) {
         return prisma_1.default.source.create({

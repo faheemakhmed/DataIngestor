@@ -1,3 +1,4 @@
+import 'tsconfig-paths/register';
 import { JobType } from '@prisma/client';
 import { getPendingJobs, processJob } from '../modules/queue/queue.service';
 import { enrichNormalizedRecord } from '../modules/enrichment/enrichment.service';

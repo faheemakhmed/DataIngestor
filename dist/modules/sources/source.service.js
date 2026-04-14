@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sourceService = exports.SourceService = void 0;
 const source_repository_1 = require("./source.repository");
-const logger_1 = require("@/lib/logger");
+const logger_1 = require("../../lib/logger");
 class SourceService {
     async createSource(data) {
         logger_1.logger.info('Creating new source', { name: data.name, type: data.type });

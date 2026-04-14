@@ -36,7 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sourceController = exports.SourceController = void 0;
 const zod_1 = require("zod");
 const source_service_1 = require("./source.service");
-const logger_1 = require("@/lib/logger");
+const logger_1 = require("../../lib/logger");
 const createSourceSchema = zod_1.z.object({
     name: zod_1.z.string().min(1).max(255),
     type: zod_1.z.enum(['API', 'RSS', 'CSV', 'JSON']),
@@ -119,7 +119,7 @@ class SourceController {
                 res.status(404).json({ error: 'Source not found' });
                 return;
             }
-            const { createIngestionJob } = await Promise.resolve().then(() => __importStar(require('@/modules/queue/queue.service')));
+            const { createIngestionJob } = await Promise.resolve().then(() => __importStar(require('../../modules/queue/queue.service')));
             const job = await createIngestionJob(id);
             logger_1.logger.info('Ingestion job created', { sourceId: id, jobId: job.id });
             res.status(202).json({ message: 'Sync initiated', jobId: job.id });

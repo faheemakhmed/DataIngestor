@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.enrichedRecordRepository = exports.PrismaEnrichedRecordRepository = void 0;
-const prisma_1 = __importDefault(require("@/lib/prisma"));
+const prisma_1 = __importDefault(require("../../lib/prisma"));
 const client_1 = require("@prisma/client");
 class PrismaEnrichedRecordRepository {
     async create(data) {

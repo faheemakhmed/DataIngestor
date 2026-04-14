@@ -14,9 +14,9 @@ exports.reprocessJob = reprocessJob;
 exports.reprocessDeadLetter = reprocessDeadLetter;
 const client_1 = require("@prisma/client");
 const queue_repository_1 = require("./queue.repository");
-const prisma_1 = __importDefault(require("@/lib/prisma"));
-const logger_1 = require("@/lib/logger");
-const config_1 = __importDefault(require("@/lib/config"));
+const prisma_1 = __importDefault(require("../../lib/prisma"));
+const logger_1 = require("../../lib/logger");
+const config_1 = __importDefault(require("../../lib/config"));
 async function createIngestionJob(sourceId, correlationId) {
     const dto = {
         type: client_1.JobType.INGEST,
